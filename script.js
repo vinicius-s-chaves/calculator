@@ -33,6 +33,14 @@ function printOperation(button) {
     display.appendChild(digit);
 };
 
+clear.addEventListener("click", clearContent);
+
+function clearContent() {
+    display.textContent = '';
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = null;
+};
 
 function operate(a, operator, b) {
     switch(operator) {
