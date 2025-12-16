@@ -1,14 +1,29 @@
 let firstNumber = 0;
 let secondNumber = 0;
-let operator = '';
+let operator = null;
 
 const display = document.querySelector(".display");
-const buttons = document.querySelectorAll(".button");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const equal = document.querySelector(".equal");
+const clear = document.querySelector(".clear");
 
-// Check if any button is pressed
-buttons.forEach((button) => button.addEventListener("click", () => {
-    printOperation(button);
+// Check if any number is pressed
+numbers.forEach((number) => number.addEventListener("click", () => {
+    if (operator === null) {firstNumber += number.textContent}
+    else {secondNumber += number.textContent};
+
+    printOperation(number);
 }));
+
+// Check if any operator is pressed
+operators.forEach((signal) => {
+    signal.addEventListener("click", () => {
+        operator = signal.textContent;
+
+        printOperation(signal);
+    });
+});
 
 // Prints the pressed button on the display
 function printOperation(button) {
@@ -17,6 +32,7 @@ function printOperation(button) {
 
     display.appendChild(digit);
 };
+
 
 function operate(a, operator, b) {
     switch(operator) {
