@@ -8,8 +8,16 @@ const operators = document.querySelectorAll(".operator");
 const equal = document.querySelector(".equal");
 const clear = document.querySelector(".clear");
 
+let pressedOperator = false;
+let printedResult = false;
+
 // Check if any number is pressed
 numbers.forEach((number) => number.addEventListener("click", () => {
+    if (pressedOperator || printedResult) {
+        display.textContent = '';
+        pressedOperator = false;
+        printedResult = false;
+    };
     if (operator === null) {firstNumber += number.textContent}
     else {secondNumber += number.textContent};
 
@@ -19,10 +27,12 @@ numbers.forEach((number) => number.addEventListener("click", () => {
 // Check if any operator is pressed
 operators.forEach((signal) => {
     signal.addEventListener("click", () => {
-        if (operator !== null) {showResult()};
-
+        if (operator !== null) {
+            showResult();
+            firstNumber = display.textContent;
+        };
+        pressedOperator = true;
         operator = signal.textContent;
-        printOperation(signal);
     });
 });
 
@@ -40,12 +50,12 @@ equal.addEventListener("click", showResult);
 function showResult() {
     let first = parseFloat(firstNumber);
     let second = parseFloat(secondNumber);
-
+    
     let result = document.createElement("h1");
     result.textContent = operate(first, operator, second);
-
+    
     clearContent();
-    firstNumber = result.textContent;
+    printedResult = true;
     display.appendChild(result);
 };
 
@@ -57,6 +67,8 @@ function clearContent() {
     firstNumber = 0;
     secondNumber = 0;
     operator = null;
+    pressedOperator = false;
+    printedResult = false;
 };
 
 function operate(a, operator, b) {
