@@ -33,6 +33,21 @@ function printOperation(button) {
     display.appendChild(digit);
 };
 
+// Show result when press equal
+equal.addEventListener("click", showResult);
+
+function showResult() {
+    let first = parseFloat(firstNumber);
+    let second = parseFloat(secondNumber);
+
+    let result = document.createElement("h1");
+    result.textContent = operate(first, operator, second);
+
+    clearContent();
+    display.appendChild(result);
+};
+
+// Clear the display and the variables
 clear.addEventListener("click", clearContent);
 
 function clearContent() {
