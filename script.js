@@ -19,8 +19,9 @@ numbers.forEach((number) => number.addEventListener("click", () => {
 // Check if any operator is pressed
 operators.forEach((signal) => {
     signal.addEventListener("click", () => {
-        operator = signal.textContent;
+        if (operator !== null) {showResult()};
 
+        operator = signal.textContent;
         printOperation(signal);
     });
 });
@@ -44,6 +45,7 @@ function showResult() {
     result.textContent = operate(first, operator, second);
 
     clearContent();
+    firstNumber = result.textContent;
     display.appendChild(result);
 };
 
