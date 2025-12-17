@@ -17,6 +17,7 @@ numbers.forEach((number) => number.addEventListener("click", () => {
         display.textContent = '';
         pressedOperator = false;
         printedResult = false;
+        operators.forEach((signal) => signal.classList.remove("pressed"));
     };
     if (operator === null) {firstNumber += number.textContent}
     else {secondNumber += number.textContent};
@@ -33,6 +34,7 @@ operators.forEach((signal) => {
         };
         pressedOperator = true;
         operator = signal.textContent;
+        signal.classList.toggle("pressed");
     });
 });
 
@@ -73,6 +75,7 @@ function clearContent() {
     operator = null;
     pressedOperator = false;
     printedResult = false;
+    operators.forEach((signal) => signal.classList.remove("pressed"));
 };
 
 function operate(a, operator, b) {

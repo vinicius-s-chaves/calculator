@@ -68,3 +68,12 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.button:hover {
+    box-sizing: border-box;
+    border: 2px, solid, black;
+}
+
+.pressed {
+    background-color: darkgray;
+}
