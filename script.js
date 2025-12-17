@@ -38,7 +38,9 @@ operators.forEach((signal) => {
 
 // Prints the pressed button on the display
 function printOperation(button) {
-    let digit = document.createElement('h1');
+    let digit = document.createElement('h2');
+    digit.style["padding"] = 0;
+    digit.style["margin"] = 0;
     digit.textContent = button.textContent;
 
     display.appendChild(digit);
@@ -51,7 +53,9 @@ function showResult() {
     let first = parseFloat(firstNumber);
     let second = parseFloat(secondNumber);
     
-    let result = document.createElement("h1");
+    let result = document.createElement("h2");
+    result.style["padding"] = 0;
+    result.style["margin"] = 0;
     result.textContent = operate(first, operator, second);
     
     clearContent();
