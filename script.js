@@ -92,6 +92,8 @@ function operate(a, operator, b) {
         case '/':
             return divide(a, b);
             break;
+        case '%':
+            return module(a, b);
         default:
             "Not valid operation";
             break;
@@ -112,4 +114,8 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+};
+
+function module(a, b) {
+    return a % b;
 };
