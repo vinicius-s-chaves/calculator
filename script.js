@@ -21,7 +21,7 @@ numbers.forEach((number) => number.addEventListener("click", () => {
     };
     if (operator === null) {firstNumber += number.textContent}
     else {secondNumber += number.textContent};
-
+    
     printOperation(number);
 }));
 
@@ -62,6 +62,7 @@ function showResult() {
     
     clearContent();
     printedResult = true;
+    firstNumber = result.textContent;
     display.appendChild(result);
 };
 
